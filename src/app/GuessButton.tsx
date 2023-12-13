@@ -19,8 +19,8 @@ function GuessButton() {
 
     let json = { image: pixels.join() };
 
-    let url = "http://localhost:8080/network/guess";
-    //let url = "https://v2202312212756249072.quicksrv.de:8080/network/guess";
+    //let url = "http://localhost:8080/network/guess";
+    let url = "https://v2202312212756249072.quicksrv.de:8080/network/guess";
 
     const res = fetch(url, {
       method: "POST",
