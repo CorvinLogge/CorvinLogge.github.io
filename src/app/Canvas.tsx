@@ -10,7 +10,7 @@ function Canvas({ width, height }: Properties) {
   let dragging = false;
   let lastX = -1;
   let lastY = -1;
-  let lineWidth = 30;
+  let lineWidth = 60;
 
   const drawPoint = (e: React.MouseEvent) => {
     let canvas = e.target as HTMLCanvasElement;

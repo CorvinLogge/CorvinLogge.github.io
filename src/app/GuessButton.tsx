@@ -18,7 +18,7 @@ function GuessButton() {
     }
 
     let json = {
-      network_id: "03.04.2024_09-32-59",
+      network_id: "10.04.2024_21-38-02",
       image: [pixels.join()],
     };
 
