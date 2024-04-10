@@ -17,10 +17,13 @@ function GuessButton() {
       pixels.push(image.data[i]);
     }
 
-    let json = { image: pixels.join() };
+    let json = {
+      network_id: "03.04.2024_09-32-59",
+      image: [pixels.join()],
+    };
 
-    let url = "https://localhost:8080/network/guess";
-    //let url = "https://v2202312212756249072.quicksrv.de:8080/network/guess";
+    //let url = "http://localhost:8000/network/guess";
+    let url = "https://v2202312212756249072.quicksrv.de/network/guess";
 
     const res = fetch(url, {
       method: "POST",
@@ -28,9 +31,10 @@ function GuessButton() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(json),
+      body: JSON.stringify(json).replace('["', "[").replace('"]', "]"),
     })
-      .then((res) => console.log(res.json()))
+      .then((res) => res.json())
+      .then((res) => console.log(res))
       .catch((err) => console.error(err));
   };
 
