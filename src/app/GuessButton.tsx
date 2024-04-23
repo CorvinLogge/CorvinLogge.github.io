@@ -31,10 +31,10 @@ function GuessButton() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(json).replace('["', "[").replace('"]', "]"),
+      body: JSON.stringify(json),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => console.log(res.indexOf(Math.max(...res))))
       .catch((err) => console.error(err));
   };
 
