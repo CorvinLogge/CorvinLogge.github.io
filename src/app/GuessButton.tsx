@@ -20,10 +20,7 @@ function GuessButton() {
             image: btoa(String.fromCharCode.apply(null, pixels))
         };
 
-        //let url = "http://localhost:8000/network/guess";
-        let url = "https://v2202312212756249072.quicksrv.de/network/guess";
-
-        console.log(process.env.NODE_ENV);
+        let url = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_URL}`;
 
         const guess = async (): Promise<any> => {
             const response = await fetch(url, {
