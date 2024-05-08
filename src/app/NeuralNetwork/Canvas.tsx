@@ -1,12 +1,14 @@
 "use client";
-import {MouseEventHandler} from "react";
+import React from "react";
 
 interface Properties {
     width: number;
     height: number;
+    className?: string
+    children?: React.ReactNode
 }
 
-function Canvas({width, height}: Properties) {
+function Canvas({width, height, className = "", children}: Properties) {
     let dragging = false;
     let lastX = -1;
     let lastY = -1;
@@ -82,20 +84,17 @@ function Canvas({width, height}: Properties) {
 
     return (
         <canvas
+            className={className}
             id="digitCanvas"
-            style={{
-                background: "#000000",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-            }}
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUP}
             onMouseMove={handleMouseMove}
             width={width}
             height={height}
-        ></canvas>
+        >
+            {children}
+        </canvas>
+
     );
 }
 
