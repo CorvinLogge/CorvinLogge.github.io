@@ -6,12 +6,15 @@ const webpackConfig = {
     module: {
         rules: [
             {
-                test: /\.mdx?$/,
+                test: /\.?$/,
                 use: [
                     {
-                        loader: '@mdx-js/loader',
+                        loader: '',
                         /** @type {import('@mdx-js/loader').Options} */
-                        options: {}
+                        options: {
+                            remarkPlugins: [],
+                            rehypePlugins: [rehypeHighlight],
+                        }
                     }
                 ]
             }
@@ -21,6 +24,7 @@ const webpackConfig = {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    output: 'export',
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     reactStrictMode: true,
     webpack: webpackConfig
