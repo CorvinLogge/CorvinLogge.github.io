@@ -1,0 +1,148 @@
+.SidebarRoot * {
+    margin: 0;
+    padding: 0;
+}
+
+.SidebarRoot nav a {
+    text-decoration: none;
+}
+
+.SidebarRoot nav li {
+    list-style-type: none;
+}
+
+.SidebarRoot nav {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--background);
+
+    height: 60px;
+    width: 100%;
+
+    right: 0;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    transition: 0.5s ease-in-out;
+}
+
+.SidebarRoot nav .SidebarItem {
+    color: whitesmoke;
+    width: fit-content;
+    height: 100%;
+}
+
+.homeButton {
+    margin: 0.125rem auto 0.125rem 1rem;
+}
+
+.linksContainer {
+    padding: 0 50px 0 50px;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: flex-end;
+    align-items: center;
+
+    width: 100%;
+    height: fit-content;
+}
+
+.showButton {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 60px;
+    width: 60px;
+
+    border-radius: 60px;
+
+    background: var(--background);
+
+    z-index: 2;
+
+    transition: 0.5s ease-in-out;
+}
+
+.showButton:hover {
+    background-color: var(--accent);
+
+    transition: 0.25s ease-in-out;
+}
+
+.showButton svg {
+    position: relative;
+    top: 50%;
+    left: 50%;
+
+    translate: -50% -50%;
+}
+
+.dropdownContainer {
+    color: whitesmoke;
+    width: 100px;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownContainer label {
+    padding: 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.30rem;
+    color: whitesmoke;
+}
+
+.dropdownContainer:hover {
+    position: absolute;
+    top: 0;
+}
+
+.dropdownContainer:hover > ul {
+    display: block;
+    background-color: var(--background);
+}
+
+.SidebarRoot nav ul {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    display: none;
+    flex-direction: column;
+
+    width: fit-content;
+}
+
+.sidebarCheckbox {
+    display: none;
+}
+
+.sidebarCheckbox:checked ~ nav {
+    width: 0;
+
+    border-radius: 60px;
+
+    background-color: whitesmoke;
+}
+
+.SidebarRoot {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.SidebarItem {
+    padding: 1rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    width: fit-content;
+    border-radius: 0.5rem;
+}
+
+.SidebarItem:hover {
+    background-color: var(--accent);
+}

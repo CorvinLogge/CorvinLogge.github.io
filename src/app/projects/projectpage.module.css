@@ -1,0 +1,96 @@
+.ProjectPageRoot {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: flex-start;
+
+    background-color: var(--background-white);
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.Article {
+    margin: 1rem;
+    padding: 2rem 4rem 2rem 4rem;
+
+    max-width: calc(50% - 2rem - 8rem);
+
+    width: 100%;
+    height: 100%;
+
+    word-wrap: break-word;
+
+    transition: margin 0.5s;
+}
+
+
+.Preview {
+    overflow: hidden;
+
+    margin: 1rem;
+    padding: 2rem 4rem 2rem 4rem;
+
+    max-width: calc(50% - 2rem - 8rem);
+
+    width: 100%;
+    height: 100%;
+
+    transition: width 0.5s, padding 0s, margin 0s;
+
+    background-color: white;
+}
+
+.previewButton {
+    position: absolute;
+
+    z-index: 2;
+
+    top: 80px;
+    right: 20px;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 20px;
+
+    background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 5L11.7929 11.2929C12.1834 11.6834 12.1834 12.3166 11.7929 12.7071L5.5 19" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.5 5L19.7929 11.2929C20.1834 11.6834 20.1834 12.3166 19.7929 12.7071L13.5 19" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.inlinePreviewButton {
+    color: #0969da;
+}
+
+.inlinePreviewButton:hover {
+    text-decoration: underline;
+}
+
+.previewButton:hover {
+    background-color: var(--accent);
+}
+
+.previewCheckbox {
+    display: none;
+}
+
+.previewCheckbox:checked ~ .previewButton {
+    background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="utf-8"%3F><svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 19L12.7071 12.7071C12.3166 12.3166 12.3166 11.6834 12.7071 11.2929L19 5" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 19L4.70711 12.7071C4.31658 12.3166 4.31658 11.6834 4.70711 11.2929L11 5" stroke="%23000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+}
+
+.previewCheckbox:checked ~ .ProjectPageRoot .Preview {
+    transition: width 0.5s, padding-top 0s 0.5s, padding-bottom 0s 0.5s, padding-left 0.5s, padding-right 0.5s, margin-top 0s 0.5s, margin-bottom 0s 0.5s, margin-left 0.5s, margin-right 0.5s;
+
+    width: 0;
+    /*height: 0;*/
+    padding: 0;
+    margin: 0;
+}
+
+.previewCheckbox:checked ~ .ProjectPageRoot .Article {
+    margin-left: 0;
+    margin-right: 0;
+}

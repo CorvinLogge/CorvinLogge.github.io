@@ -27,8 +27,7 @@ function GuessButton({className = "", setResult}: Properties) {
             image: btoa(String.fromCharCode.apply(null, pixels))
         };
 
-        //let url = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_URL}`;
-        let url = "https://v2202312212756249072.quicksrv.de/network/guess";
+        let url = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_URL}`;
 
         const response = await fetch(url, {
             method: "POST",
@@ -47,7 +46,7 @@ function GuessButton({className = "", setResult}: Properties) {
             if (setResult) {
                 setResult(handleResult(res))
             }
-        }).catch(reason => {
+        }).catch(() => {
             if (setResult) {
                 setResult(-1)
             }
@@ -57,7 +56,7 @@ function GuessButton({className = "", setResult}: Properties) {
     return (
         <button
             onClick={doGuess}
-            className={"rounded-lg bg-rose-700 py-3 px-6 font-light text-2xl uppercase text-gray-100 shadow-pink-500/20 transition-all hover:bg-rose-800 active:bg-rose-900 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none " + className}
+            className={className}
         >
             Guess
         </button>

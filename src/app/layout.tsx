@@ -1,36 +1,29 @@
-"use client";
-import "./globals.css";
-import React, {useState} from "react";
-import {Sidebar} from "./Sidebar/Sidebar";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "@/app/Home/Home";
-import Network from "@/app/NeuralNetwork/Network";
-import ContentContainer from "@/app/ContentContainer/ContentContainer";
+import React from "react";
+import {Sidebar} from "@/components/Sidebar/Sidebar";
+import "github-markdown-css/github-markdown-light.css"
+import "highlight.js/styles/github.css"
+import "@/global.css"
+import {Raleway} from "next/font/google"
 
-function RootLayout({
-                        children,
-                    }: Readonly<{
+const inter = Raleway({subsets: ["latin"]})
+
+export default function RootLayout({
+                                       children,
+                                   }: Readonly<{
     children: React.ReactNode;
 }>) {
-
-    const [collapsed, setCollapsed] = useState(false);
-
     return (
-        <html lang="en">
+        <html className={inter.className}>
+        <head>
+            <title>Portfolio</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
         <body>
-        <div className="h-screen flex flex-row justify-between">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Sidebar setCollapsed={setCollapsed} collapsed={collapsed}/>}>
-                        <Route path="home" element={<Home/>}/>
-                        <Route path="network" element={<Network setCollapsed={setCollapsed} collapsed={collapsed}/>}/>
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+        <div>
+        <Sidebar/>
+            {children}
         </div>
         </body>
         </html>
-    );
+    )
 }
-
-export default RootLayout;
