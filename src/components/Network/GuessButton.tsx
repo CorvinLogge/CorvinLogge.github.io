@@ -5,6 +5,17 @@ interface Properties {
     setResult?: Dispatch<SetStateAction<number>>
 }
 
+// https://stackoverflow.com/a/60782610
+function _arrayBufferToBase64( buffer: number[] ) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
+}
+
 function GuessButton({className = "", setResult}: Properties) {
     const guess = async (): Promise<any> => {
         let canvas = document.getElementById("digitCanvas") as HTMLCanvasElement;
@@ -24,7 +35,7 @@ function GuessButton({className = "", setResult}: Properties) {
 
         let json = {
             network_id: "23042024123942",
-            image: btoa(String.fromCharCode.apply(null, pixels))
+            image: _arrayBufferToBase64(pixels)
         };
 
         let url = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_URL}`;
@@ -46,9 +57,10 @@ function GuessButton({className = "", setResult}: Properties) {
             if (setResult) {
                 setResult(handleResult(res))
             }
-        }).catch(() => {
+        }).catch((reason) => {
+            console.error(reason);
             if (setResult) {
-                setResult(-1)
+                setResult(-1);
             }
         })
     }

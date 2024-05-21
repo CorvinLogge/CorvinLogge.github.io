@@ -4,8 +4,18 @@ import "github-markdown-css/github-markdown-light.css"
 import "highlight.js/styles/github.css"
 import "@/global.css"
 import {Raleway} from "next/font/google"
+import {Metadata, Viewport} from "next";
 
 const inter = Raleway({subsets: ["latin"]})
+
+export const metadata: Metadata = {
+    title: 'Portfolio',
+}
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+}
 
 export default function RootLayout({
                                        children,
@@ -14,13 +24,9 @@ export default function RootLayout({
 }>) {
     return (
         <html className={inter.className}>
-        <head>
-            <title>Portfolio</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        </head>
         <body>
         <div>
-        <Sidebar/>
+            <Sidebar/>
             {children}
         </div>
         </body>

@@ -40,7 +40,7 @@
 
     word-wrap: break-word;
 
-    transition: margin var(--animation-speed);
+    transition: margin 0s;
 
     overflow-x: hidden;
 }
@@ -108,16 +108,19 @@
 }
 
 .previewCheckbox:checked ~ .ProjectPageRoot .Article {
+    transition: margin 0s var(--animation-speed);
+
     margin-left: 0;
     margin-right: 0;
 }
 
 @media (max-width: 1500px) {
     .ProjectPageRoot {
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .Preview {
+        padding: 2rem;
         max-width: 100%;
     }
 
@@ -135,7 +138,7 @@
         transition: var(--animation-speed) 0s linear, margin 0s 0s, padding 0s 0s;
 
         margin: 1rem;
-        padding: 2rem 4rem 2rem 4rem;
+        padding: 2rem;
 
         max-width: 100%;
 
