@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction} from "react";
+import {match} from "node:assert";
 
 interface Properties {
     className?: string
@@ -6,14 +7,14 @@ interface Properties {
 }
 
 // https://stackoverflow.com/a/60782610
-function _arrayBufferToBase64( buffer: number[] ) {
+function _arrayBufferToBase64(buffer: number[]) {
     let binary = '';
     const bytes = new Uint8Array(buffer);
     const len = bytes.byteLength;
     for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode( bytes[ i ] );
+        binary += String.fromCharCode(bytes[i]);
     }
-    return window.btoa( binary );
+    return window.btoa(binary);
 }
 
 function GuessButton({className = "", setResult}: Properties) {
@@ -33,8 +34,10 @@ function GuessButton({className = "", setResult}: Properties) {
             pixels.push(image.data[i]);
         }
 
+        let network_id = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_ID}`;
+
         let json = {
-            network_id: "23042024123942",
+            network_id: network_id,
             image: _arrayBufferToBase64(pixels)
         };
 
@@ -49,7 +52,14 @@ function GuessButton({className = "", setResult}: Properties) {
             body: JSON.stringify(json),
         });
 
-        return await response.json();
+        switch (response.status) {
+            case 200 :
+                return await response.json();
+            default: {
+                console.error(await response.text())
+                return null;
+            }
+        }
     };
 
     const doGuess = () => {
@@ -76,6 +86,8 @@ function GuessButton({className = "", setResult}: Properties) {
 }
 
 function handleResult(res: any): number {
+
+    if (res == null) return -1
 
     let max = Math.max(...res);
 
