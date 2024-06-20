@@ -1,20 +1,9 @@
 import {Dispatch, SetStateAction} from "react";
-import {match} from "node:assert";
+import runLengthEncoding from "@/utils/rle";
 
 interface Properties {
     className?: string
     setResult?: Dispatch<SetStateAction<number>>
-}
-
-// https://stackoverflow.com/a/60782610
-function _arrayBufferToBase64(buffer: number[]) {
-    let binary = '';
-    const bytes = new Uint8Array(buffer);
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-        binary += String.fromCharCode(bytes[i]);
-    }
-    return window.btoa(binary);
 }
 
 function GuessButton({className = "", setResult}: Properties) {
@@ -31,14 +20,16 @@ function GuessButton({className = "", setResult}: Properties) {
         let pixels: number[] = [];
 
         for (let i = 0; i < image.data.length; i += 4) {
-            pixels.push(image.data[i]);
+            pixels.push(Math.round(image.data[i] / 255));
         }
+
+        let imageStr = runLengthEncoding(pixels.join(""));
 
         let network_id = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_ID}`;
 
         let json = {
             network_id: network_id,
-            image: _arrayBufferToBase64(pixels)
+            image: imageStr
         };
 
         let url = `${process.env.NEXT_PUBLIC_NEURAL_NETWORK_URL}`;
