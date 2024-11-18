@@ -27,7 +27,7 @@ const nextConfig = {
     output: 'export',
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
     reactStrictMode: true,
-    webpack: webpackConfig
+    webpack: webpackConfig,
 }
 
 const withMDX = createMDX({

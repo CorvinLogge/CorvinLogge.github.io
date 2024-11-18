@@ -1,8 +1,8 @@
 import {SidebarItem} from "./SidebarItem";
 import style from "./sidebar.module.css";
 
-export function Sidebar() {
 
+export function Sidebar() {
     return (
         <>
             <div className={style.SidebarRoot}>
@@ -25,6 +25,7 @@ export function Sidebar() {
                                 <li><SidebarItem link="/projects/network">Network</SidebarItem></li>
                             </ul>
                         </div>
+
                     </div>
                 </nav>
             </div>

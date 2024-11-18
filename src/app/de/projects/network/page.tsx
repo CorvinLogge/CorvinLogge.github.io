@@ -1,13 +1,13 @@
 'use client'
-import style from "@/app/projects/projectpage.module.css"
+import style from "@/app/en/projects/projectpage.module.css"
 import Network from "@/components/Network/Network"
-import Article from "@/articles/network.mdx"
+import NetworkArticle from "@/articles/en/network.mdx"
 
 export default function Page() {
     return (
         <>
             <div className={style.Article + " markdown-body"}>
-                <Article/>
+                <NetworkArticle/>
             </div>
 
             <div className={style.Preview}>

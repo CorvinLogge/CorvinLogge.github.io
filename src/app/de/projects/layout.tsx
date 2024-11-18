@@ -1,5 +1,5 @@
 import React from "react";
-import style from "@/app/projects/projectpage.module.css";
+import style from "@/app/en/projects/projectpage.module.css";
 
 export default function RootLayout({
                                        children,
