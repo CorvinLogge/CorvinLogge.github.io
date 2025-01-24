@@ -1,3 +1,30 @@
 .Canvas {
     background-color: black;
+    touch-action: none;
+}
+
+.CanvasContainer {
+    display: grid;
+    justify-content: center;
+}
+
+.ButtonContainer {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    grid-template: "a b c";
+    justify-content: space-between;
+}
+
+.Button {
+    border: none;
+    width: 50px;
+    height: 50px;
+}
+
+.Button:hover {
+    background-color: var(--accent);
+    border-color: green;
+    border-width: 10px;
 }
